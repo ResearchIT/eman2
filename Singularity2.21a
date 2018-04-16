@@ -1,0 +1,19 @@
+Bootstrap: yum
+OSVersion: 7
+MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/ 
+#MirrorURL: https://download.fedoraproject.org/pub/fedora/linux/releases/%{OSVERSION}/Everything/$basearch/os/
+Include: yum
+
+%environment
+export PATH=/opt/eman2/bin:$PATH
+
+%post
+yum update -y
+yum install -y @"Development Tools"
+yum install -y epel-release
+yum install -y libgomp cmake3 vim wget mesa mesa-libGL coreutils
+wget http://ncmi.bcm.edu/ncmi/software/counter_222/software_138/eman2.21.linux64.centos7.sh
+bash eman2.21.linux64.centos7.sh -b -p /opt/eman2
+
+%runscript
+exec "$@"
