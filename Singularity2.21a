@@ -11,7 +11,7 @@ yum update -y
 yum install -y @"Development Tools"
 yum install -y epel-release
 yum install -y libgomp cmake3 vim wget mesa mesa-libGL coreutils libSM mesa-libGLU libXrender dejavu-sans-fonts mesa-dri-drivers
-wget http://ncmi.bcm.edu/ncmi/software/counter_222/software_138/eman2.21.linux64.centos7.sh
+wget --no-check-certificate https://cryoem.bcm.edu/cryoem/static/software/release-2.21/eman2.21.linux64.centos7.sh
 bash eman2.21.linux64.centos7.sh -b -p /opt/eman2
 
 %runscript
